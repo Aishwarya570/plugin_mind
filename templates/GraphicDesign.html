@@ -1,0 +1,325 @@
+
+
+<html>
+<head>
+<title>GRAPHIC DESIGN </title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+=========================================================
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* information */
+body{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+  margin-bottom: 50px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+  /* text-align: center; */
+  margin-left: 0px;
+  font-size: 20px;
+}
+#about h2{
+  font-size: 30px;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+/* Geometry ---Tables */
+.interactive table{
+  color: white;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+}
+.interactive th,td{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}" style="height: 70px; padding-left: 30px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/AboutGR">ABOUT GOLDEN RATIO</a>
+        </li>
+        <li class="nav-item dropdown">
+ 
+<a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+        INTERACTIVE
+      </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/imageGR">Detecting Golden Ratio</a>
+                <a class="dropdown-item" href="/human1">Golden Ratio in Humans</a>
+                <a class="dropdown-item" href="/guitar">Virtual Guitar</a>
+                <a class="dropdown-item" href="/liveGR">Live Golden Ratio Object Detector</a>
+              </div>
+            </li>
+        <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            APPLICATION
+          </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/Applications">All</a>
+                    <a class="dropdown-item" href="/GraphicDesign">Graphic Design</a>
+                    <a class="dropdown-item" href="/Photography">Photography</a>
+                    <a class="dropdown-item" href="/Architecture">Architecture</a>
+                    <a class="dropdown-item" href="/Nature">Natural Phenomena</a>
+                    <a class="dropdown-item" href="/Finance">Financial Analysis</a>
+                    <a class="dropdown-item" href="/Facial">Facial & Cosmetic Dentistry</a>
+                    <a class="dropdown-item" href="/Geometry">Mathematics & Geometry</a>
+                    <a class="dropdown-item" href="/Quantum">Quantum Physics</a>
+                  </div>
+                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- INFORMATION -->
+
+<section id="about">
+  <section id="interactive">
+    <div class="container">
+      <h1>GRAPHIC DESIGN</h1>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>TYPOGRAPHY</h2>
+    <img src="{{url_for('static', filename='img/gd1.png')}}" alt="" style="display: block;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 230px;
+    margin-right: auto;">
+    </div>
+    <div class="about-content">
+<p>The easiest way to start using the golden ratio is to implement it within your typographical graphic design elements.
+let’s say your headline text is 20pt and you want to find an appropriate size for your body text. Since the headline text is the bigger element, you would divide by 1.618 instead of multiplying.
+Therefore, 20/1.618 = 12.36, which you could round down to 12pt body text (or up to 13pt, if you so choose). That’s the beauty of the g olden ratio—you don’t have to be perfect.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>SIZING/ CROPPING IMAGES</h2>
+        <img src="{{url_for('static', filename='img/gd2.jpg')}}" alt="" style="display: block;
+        margin-top: 40px;
+        margin-bottom: 20px;
+        margin-left: 230px;
+        margin-right: auto;">
+    </div>
+    <div class="about-content">
+<p>A simple way to incorporate the golden ratio into a design is to crop photos (or any other images you may use) into a golden rectangle shape.</p>
+<P>When you crop images with the golden ratio in mind (especially when working with photography), you might also consider using the golden sπral as a guide for the shot’s composition. For example, you could crop a photo to golden proportions in such a way that the main focal point of the image is at the centre of the corresponding golden sπral. It adds interest in a way that’s very similar to the rule of thirds, but many consider it a more natural-looking, aesthetically pleasing choice.</p>
+<P>Using the golden ratio in your visual designs can also be as simple as applying it to the proportional size difference between two different elements—even elements that aren’t “golden” shapes themselves.</p>
+<P>For example, say you had an image in your design that was 2 inches wide and you wanted to pair it with a smaller πcture. A 2 inch image divided by 1.618 comes out to about 1.236 inches, which you could safely round down to 1.2 inches.</p>
+<P>You could also add a larger image to the design, which would require you to multiply your 2 inch photo by the golden ratio to end up with roughly 3.2 inches. And now you’ve got yourself a Fibonacci sequence going, creating even more interest than before.
+</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>LOGO DESIGN</h2>
+    <img src="{{url_for('static', filename='img/gd3.jpg')}}" style="display: block;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 220px;
+    margin-right: auto;">
+    </div>
+    <div class="about-content">
+<p>You can also use the golden ratio to add aesthetic appeal directly to a company’s branding. Even if the logo itself isn’t shaped like a golden rectangle or triangle, it can still employ elements that use golden proportions.</p>
+<p>Once again, using a golden spiral to inform your graphic design’s layout is a lot like using the rule of thirds grid—you want the focus of the design to be centered on 	 sπral, using the golden rectangles as division lines for the placement of visual elements. But unlike the rule of thirds grid, you can move the golden rectangle around to suit your needs.
+A common trick in web design is to use the golden ratio to divide space between the body of the website and the sidebar. Taking the measurements of the space they’re working with, web designers can ensure that the body is 1.618 times larger than the sidebar by taking the total width of the canvas, dividing it by 1.618, and then subtracting that number from the overall width of the canvas.
+The golden ratio in design to create a template and decide what type of content is needed in each place. You can use it to create a path that’s easy for the human eye to follow and concentrate attention in a specific area. You can use it to create negative space and minimalist design.You can infinitely divide a shape into smaller geometric shapes using the golden ratio.
+</p>
+</div>
+</div>
+</div>
+</div>
+</div>
+</section>
+</section>
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

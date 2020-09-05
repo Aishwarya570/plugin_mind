@@ -1,0 +1,334 @@
+
+
+
+<html>
+<head>
+<title>Quantum Physics</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+=========================================================
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* information */
+body{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+  margin-bottom: 50px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+  /* text-align: center; */
+  margin-left: 0px;
+  font-size: 20px;
+}
+#about h2{
+  font-size: 30px;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+/* Geometry ---Tables */
+.interactive table{
+  color: white;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+}
+.interactive th,td{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}" style="height: 70px; padding-left: 30px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/AboutGR">ABOUT GOLDEN RATIO</a>
+        </li>
+        <li class="nav-item dropdown">
+ 
+<a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+        INTERACTIVE
+      </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/imageGR">Detecting Golden Ratio</a>
+                <a class="dropdown-item" href="/human1">Golden Ratio in Humans</a>
+                <a class="dropdown-item" href="/guitar">Virtual Guitar</a>
+                <a class="dropdown-item" href="/liveGR">Live Golden Ratio Object Detector</a>
+              </div>
+            </li>
+        <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            APPLICATION
+          </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/Applications">All</a>
+                    <a class="dropdown-item" href="/GraphicDesign">Graphic Design</a>
+                    <a class="dropdown-item" href="/Photography">Photography</a>
+                    <a class="dropdown-item" href="/Architecture">Architecture</a>
+                    <a class="dropdown-item" href="/Nature">Natural Phenomena</a>
+                    <a class="dropdown-item" href="/Finance">Financial Analysis</a>
+                    <a class="dropdown-item" href="/Facial">Facial & Cosmetic Dentistry</a>
+                    <a class="dropdown-item" href="/Geometry">Mathematics & Geometry</a>
+                    <a class="dropdown-item" href="/Quantum">Quantum Physics</a>
+                  </div>
+                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- INFORMATION -->
+
+<section id="about">
+  <section id="interactive">
+    <div class="container">
+      <h1>QUANTUM PHYSICS</h1>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>Relation between Time in Quantum Physics and Golden Ratio</h2>
+    </div>
+    <div class="about-content">
+<p>Time in Quantum Physics may be related to Φ. The Golden Ratio seems to be appearing in several places in the Quantum Physics Model.  Because an electron has an electric charge and an intrinsic rotational motion, or spin, it behaves in some respects like a small bar magnet and is said to have a magnetic moment.  Because the electron also has mass, it behaves in some respects like a spinning top, and is said to have spin angular momentum.</p>
+<p>The g factor of the electron is defined as the ratio of its magnetic moment to its sπn angular momentum.  The electron g-factor is due to the stretching of space-time as the electron sπns at the speed of light.</p>
+<p>Mathematically, the electron g-factor is approximately:</p>
+<p style="text-align:center;">g (factor)e = -2 / sin (Ø)</p>
+<p>and the proton g-factor is approximately:</p>
+<p style="text-align:center;">g (factor)p = 2Ø / sin (1/Ø)</p>
+<p>Thus, it appears that the Golden Ratio, or Φ, is a constant produced by time.</p>
+<p>The National Institute of Standards and Technology (NIST) states these g factor constants as per the table below.</p>
+<table border="2" style="margin-left: auto; margin-right: auto;">
+  <thead>
+    <th></th>
+    <th>g factor electron</th>
+    <th>g factor proton</th>
+  </thead>
+
+
+  <tr>
+    <td>Φ -based</td>
+    <td>-2.0022334732293</td>
+    <td>5.5848781529840</td>
+  </tr>
+  <tr>
+    <td>Per NIST</td>
+    <td>-2.0023193043718</td>
+    <td>5.5856947010000</td>
+  </tr>
+  <tr>
+    <td>Variance</td>
+    <td>-0.004287%</td>
+    <td>-0.014619%</td>
+  </tr>
+</table>
+<p></p>
+<p>While the Φ -based approach is not exactly equal to the NIST constant, with quantum level constants, there will always be a difference between theoretical work and empirical work.  This can be due to the irregularities in the metal of the test equipment, stray background radiations, or a host of other minute causes. The results of any empirical measurement always show some degree of statistical spread as a consequence.</p>
+<p>Such constants are adjusted as new measuring techniques and better materials become available. So, any theoretical value that is within one part in a thousand has scientific value.  Even if the degree of accuracy of a constant is believed to be accurate to within one part in a billion this is true. The accuracy of one part in a billion could mean that a stable condition for a specific experiment configuration has been achieved, but that particular configuration could still be influencing the measurement to a small degree.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>The Emergence Theory and Golden Ratio</h2>
+        <img src="{{url_for('static', filename='img/qp1.png')}}" alt=""style="display: block;
+        margin-top: 40px;
+        margin-bottom: 20px;
+  margin-left: 260px;
+  /* margin-right: 350px; */
+  width: 500px; height: 300px;">
+    </div>
+    <div class="about-content">
+<p>Emergence theory predicts a fundamental, natural phenomenon that is so strange yet so prevalent that, with no physics theory having ever explained it, has been largely ignored by the scientific establishment and often seen as the stuff of amateur scientists and hobbyists. This phenomenon is the ubiquity of the golden ratio in nature from the micro (including the Planck scale) to the macro scale. Upon learning of a golden ratio related fact, most scientists will often treat it as a coincidence. However, the statistical probability of the golden ratio’s unrelenting prevalence to such high accuracy is practically zero.</p>
+<p>Emergence theory is based deeply on the notion of language. A powerful language is one which has the ability to express the maximum amount of meaning with the least number of choices, since each choice requires resources. A resource in this sense can be a unit of electricity spent for a logic gate to be opened to activate a binary choice in a computer language, or a calorie or two of energy needed to make a mental choice of what shirt to wear.
+After all, physical reality is geometric.</p>
+<p>And this is where the golden ratio comes in. Quasicrystals are golden ratio based geometric languages. They are codes made of geometric symbols. Since reality is three dimensional, we suggest to look first to see if reality might be written in the code 3D quasicrystals. Time and motion could simply be ordered sequences of different 3D quasicrystal configurations, “played” rapidly like a 3D strip of film frames. Ideas like the invariance of the speed of light could be explained using new ideas like an update of the de Broglie electron clock model.</p>
+<p>Any 3D quasicrystal is really just an interactive network of 1D quasicrystals. The most foundational and simplest 1D quasicrystal, the Fibonacci chain, has two geometric “letters” in its language. (Yes, quasicrystals are languages or codes because they fully meet the definition by having (1) a finite set of two or more symbols, (2) symbol matching rules and (3) syntactical degrees of freedom.) The two geometric letters in a Fibonacci chain quasicrystal are lengths with a ratio of one to the other that is the golden ratio, where the long length has a ratio to the short length that is the same ratio as the long length to the sum of the long + short length. It’s the only ratio in math that switch hits like this.</p>
+<p>Languages that have a lot of letters are costly. Imagine if the English language had 23 million letters! Working with it would be mentally difficult and would certainly not conserve choices. Let’s clarify: all choices are not equally resource intensive. Does it require more mental energy to choose between vanilla and chocolate or to choose from 100 delicious flavours of ice cream? Similarly, languages with fewer letters require less resources for each choice of letter. This is one reason why this text you’re reading is expressed as binary code under the secondary level of English words. In a geometric code, like the quasicrystal code nature might be using, a two-letter code might be powerful as well. And the only way to get networks of 1D codes to act as an interactive 3D network of 1D codes is to use the golden ratio. Explaining that might take a bit more time and a little math. But suffice it to say that the <b>golden ratio is a powerful tool for building physics.</b></p>
+
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+</section>
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

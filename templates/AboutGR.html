@@ -1,0 +1,482 @@
+
+
+
+
+<html>
+<head>
+<title>About Golden Ratio</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+=========================================================
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+========================================================
+
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* information */
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+  /* text-align: center; */
+  margin-left: 400px;
+  font-size: 20px;
+}
+#about h2{
+  font-size: 50px;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+#about img{
+  height: 350px;
+  width: 350px;
+  border: 2px solid black;
+  left:10px;
+  bottom: 254px;
+  position: absolute;
+}
+#boldletter b{
+  text-align: center;
+  font-family: times;
+  font-size: 37px;
+}
+.art td{
+  height: 560px;
+  width: 320px;
+  border: 2px solid black;
+  left:10px;
+  top: 600px;
+  position: absolute;
+  font-size: 24px;
+  background-color: #fad673;
+  padding-top: 47px;
+  text-align: center;
+}
+.art1 td{
+  height: 760px;
+  width: 320px;
+  border: 2px solid black;
+  left:10px;
+  top: 1225px;
+  position: absolute;
+  font-size: 24px;
+  background-color: #fad673;
+  padding-top: 47px;
+  text-align: center;
+}
+/* FACTS */
+#interactive{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='Picture3.png')}}");
+  background-size: cover;
+  background-position: center;
+  color: #efefef!important;
+  background-attachment: fixed;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+.interactive{
+  margin-top: 40px;
+}
+.icon{
+  font-size: 40px;
+  margin: 20px auto;
+  padding: 20px;
+  height: 90px;
+  width: 90px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+#interactive p{
+  font-size: 16px;
+  margin-top: 20px;
+  color: #faf1d9;
+}
+#interactive b{
+  font-size: 20px;
+}
+.interactive .col-md-4:hover{
+  background: #fa8f87;
+  cursor: pointer;
+  transition: 0.7s;
+  transform: scale(1.2);
+}
+.interactive table{
+  color: white;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  margin-left: auto;
+  margin-right: auto;
+}
+.interactive th,td{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+#calcimage{
+  width: 230px;
+  border: 2px solid black;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/AboutGR">ABOUT GOLDEN RATIO</a>
+        </li>
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+        INTERACTIVE
+      </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/imageGR">Detecting Golden Ratio</a>
+                <a class="dropdown-item" href="/human1">Golden Ratio in Humans</a>
+                <a class="dropdown-item" href="/guitar">Virtual Guitar</a>
+                <a class="dropdown-item" href="/liveGR">Live Golden Ratio Object Detector</a>
+              </div>
+            </li>
+        <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            APPLICATION
+          </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/Applications">All</a>
+                    <a class="dropdown-item" href="/GraphicDesign">Graphic Design</a>
+                    <a class="dropdown-item" href="/Photography">Photography</a>
+                    <a class="dropdown-item" href="/Architecture">Architecture</a>
+                    <a class="dropdown-item" href="/Nature">Natural Phenomena</a>
+                    <a class="dropdown-item" href="/Finance">Financial Analysis</a>
+                    <a class="dropdown-item" href="/Facial">Facial & Cosmetic Dentistry</a>
+                    <a class="dropdown-item" href="/Geometry">Mathematics & Geometry</a>
+                    <a class="dropdown-item" href="/Quantum">Quantum Physics</a>
+                  </div>
+                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="\#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- Information -->
+<section id="about">
+  <img src="/Golden-Ratio/drsr.gif" alt="">
+  <table class="art">
+    <tr>
+      <td id="boldletter" class="">
+        <p><b>Interesting Facts</b> <p></p>There are approximately ϕ kilometers in a mile (and Φ miles in a kilometer), so converting between the two is easy if you can represent the distance as a sum of Fibonacci numbers. Just replace every number by its successor/predecessor in the sequence and add them up again!</p>
+      </td>
+    </tr>
+  </table>
+<div class="container">
+<div class="jumbotron">
+<div class="row">
+<div class="col-md-6">
+<h2>GOLDEN RATIO</h2>
+</div>
+<div class="about-content">
+<p>The golden ratio, also known as the divine proportion, golden mean, or golden section, is a number often encountered when taking the ratios of distances in simple geometric figures. It is denoted φ. Two quantities are in the golden ratio if their ratio is the same as the ratio of their sum to the larger of the two quantities.</p>
+<p>The golden ratio is a special number approximately equal to 1.618. It appears many times in geometry, art, architecture and other areas. We find the golden ratio when we divide a line into two parts so that the long part is divided by the short part is also equal to the whole length divided by the long part. The golden ratio can be defined by a geometrical construction, using the Fibonacci series, or using trigonometry and limits. The easiest way to understand its visual impact is to divide a line into two segments, a and b, according to the following proportion:</p>
+<p><b>(a+b)/a= a/b=1.618...</b></p>
+<p>The golden ratio — also called the golden number, golden section, and golden mean — appears in the Fibonacci sequence (0, 1, 1, 2, 3, 5, 8, 13). If you take any two successive numbers in the Fibonacci sequence, you’ll see that their ratio is close to the golden ratio. And the higher the numbers, the closer the approximation.</p>
+<p>By dividing an area into rectangles according to the golden ratio and adding a curve in each rectangle, you can get a better idea of the golden ratio and its relation to the Fibonacci series, called the golden spiral. </p>
+<p>The golden ratio isn’t just a number with a strong mathematical background. It’s a number that appears frequently in nature. You can find shapes and structures based on it in romanesco cauliflower, sea shells, flower petals, leaves, DNA molecules, the Milky Way, hurricanes, and the entire human body.</p>
+<p>Algebraically, for quantities a and b with a > b > 0, </p>
+<p><b>(a + b)/a = a/b = φ = 1.6180339887….</b></p>
+<p>where the Greek letter phi represents the golden ratio. It is an irrational number that is a solution to the quadratic equation x^2 – x – 1 = 0, with a value of: </p>
+<p><b>φ = (1 + √5)/2 = 1.6180339887….</b></p>
+</div>
+</div>
+</div>
+</div>
+<table class="art1">
+  <tr>
+    <td id="boldletter" class="">
+      <p><b>Interesting Facts</b> <p></p>The Golden mean is the first in a sequence of "most irrational numbers", each slightly less irrational than the last but more irrational than all irrational numbers not in the sequence. These are called silver means. The second, called the silver mean, is 1+2–√. It is the unique positive real number which is two more than its reciprocal, and so has continued fraction [2;2,2,2,2,…]. Its corresponding sequence goes 2, 5, 12, 29, 70, etc. It should be pretty clear what the recurrence is here!</p>
+    </td>
+  </tr>
+</table>
+<div class="container">
+<div class="jumbotron">
+<div class="row">
+<div class="col-md-6">
+<h2>CALCULATION</h2>
+</div>
+<div class="about-content">
+<p>Two quantities a and b are said to be in the golden ratio φ if :</p>
+<p>(a + b)/a = a/b = φ ----(1)</p>
+<p>One method for finding the value of φ is to start with the left fraction. Through simplifying the fraction and substituting in b/a = 1/φ,</p>
+<p>(a + b)/a = 1 + b/a = 1 + 1/φ            substituting from (1)</p>
+<p>Φ = 1 + 1/φ </p>
+<p>Multiplying by φ gives,</p>
+<p>Φ2 = Φ + 1</p>
+<p>which can be rearranged to </p>
+<p>Φ2 – Φ – 1 = 0 </p>
+<p>Using the quadratic equation, two solutions are obtained:</p>
+<p>(1 + √5)/2 = 1.6180339887….   and  (1 - √5)/2 = -0.6180339887…..</p>
+<p>Because φ is the ratio between positive quantities, φ is necessarily positive: </p>
+</div>
+</div>
+</div>
+</div>
+</section>
+<!-- INTERESTING FACTS -->
+<section id="interactive">
+  <div class="container">
+    <h1>MORE ABOUT GOLDEN RATIO</h1>
+    <div class="row interactive">
+      <div class="col-md-4 text-center">
+      <div class="icon">
+        <i class="fa fa-area-chart" aria-hidden="true"></i>
+      </div>
+      <h3>FIBONACCI SEQUENCE</h3>
+      <p>There is a special relationship between the Golden Ratio and the Fibonacci sequence:
+<p>0, 1, 1, 2, 3, 5, 8, 13, 21, 34, ...</p>
+<p>(The next number is found by adding up the two numbers before it.)</p>
+<p>And here is a surprise: when we take any two successive (one after the other) Fibonacci Numbers, their ratio is very close to the Golden Ratio.</p>
+<p>In fact, the bigger the pair of Fibonacci Numbers, the closer the approximation. Let us try a few:</p>
+<table border="2">
+  <thead>
+    <th>A</th>
+    <th>B</th>
+    <th>B/A</th>
+  </thead>
+
+  <tr>
+    <td>2</td>
+    <td>3</td>
+    <td>1.5</td>
+  </tr>
+  <tr>
+    <td>3</td>
+    <td>5</td>
+    <td>1.666666666...</td>
+  </tr>
+  <tr>
+    <td>5</td>
+    <td>8</td>
+    <td>1.6</td>
+  </tr>
+  <tr>
+    <td>8</td>
+    <td>3</td>
+    <td>1.625</td>
+  </tr>
+  <tr>
+    <td>...</td>
+    <td>...</td>
+    <td>...</td>
+  </tr>
+  <tr>
+    <td>144</td>
+    <td>233</td>
+    <td>1.618055556...</td>
+  </tr>
+  <tr>
+    <td>233</td>
+    <td>377</td>
+    <td>1.618025751...</td>
+  </tr>
+</table>
+<p>So we tend to get Fibonacci Number when we use the Golden Ratio.</p>
+</div>
+<div class="col-md-4 text-center">
+<div class="icon">
+<i class="fa fa-area-chart" aria-hidden="true"></i>
+</div>
+<h3>THE MOST IRRATIONAL</h3>
+<p><p>The Golden Ratio is the most irrational number. Here is why ...</p>
+<p>We saw before that the Golden Ratio can be defined in terms of itself,
+like this:</p>
+<p>(In numbers: 1.61803... = 1 + 1/1.61803...)</p>
+<p>That can be expanded into this fraction that
+goes on for ever :</p>
+<img id="calcimage" src="/Golden-Ratio/calc.png" alt="">
+<!-- <p>φ= 1+ 1/1+1/1+1/1+1/....</p> -->
+<p>So, it neatly slips in between simple fractions.</p>
+<p>Note: many other irrational numbers are close to rational numbers (such as pi= 3.141592654... is pretty close to 22/7 = 3.1428571...)</p>
+</div>
+<div class="col-md-4 text-center">
+<div class="icon">
+<i class="fa fa-area-chart" aria-hidden="true"></i>
+</div>
+<h3>Construction of a Golden Ratio Rectangle</h3>
+<p>Creating a Golden Rectangle is pretty straightforward and starts with a basic square. Follow the steps below to create your own Golden Ratio:</p>
+<b>01. Draw a square</b>
+<p>Start by drawing a square of any size. The side of this will form the length of the 'short side' of the rectangle.</p>
+<b>02. Divide the square</b>
+<p>Next, divide your square in half with a vertical line down the centre. This will leave you with two rectangles.</p>
+<b>03. Draw a diagonal line</b>
+<p>In one of these rectangles, draw a straight line from one corner to the opposite corner.</p>
+<b>04. Rotate the line</b>
+<p>Rotate this line, pivoting from the bottom (or top) point, until it lines up with the bottom of the first rectangle.</p>
+<b>05. Create a new rectangle</b>
+<p>Create a rectangle using the new horizontal line and original rectangle as guides. That's your Golden Rectangle.</p>
+</div>
+</div>
+</div>
+</section>
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

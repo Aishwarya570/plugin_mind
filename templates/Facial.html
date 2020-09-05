@@ -1,0 +1,374 @@
+<html>
+<head>
+<title>Facial & Cosmetic Dentistry</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+=========================================================
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* information */
+body{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+  margin-bottom: 50px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+  /* text-align: center; */
+  margin-left: 0px;
+  font-size: 20px;
+}
+#about h2{
+  font-size: 30px;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+/* Geometry ---Tables */
+.interactive table{
+  color: white;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+}
+.interactive th,td{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}" style="height: 70px; padding-left: 30px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/AboutGR">ABOUT GOLDEN RATIO</a>
+        </li>
+        <li class="nav-item dropdown">
+ 
+<a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+        INTERACTIVE
+      </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/imageGR">Detecting Golden Ratio</a>
+                <a class="dropdown-item" href="/human1">Golden Ratio in Humans</a>
+                <a class="dropdown-item" href="/guitar">Virtual Guitar</a>
+                <a class="dropdown-item" href="/liveGR">Live Golden Ratio Object Detector</a>
+              </div>
+            </li>
+        <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            APPLICATION
+          </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/Applications">All</a>
+                    <a class="dropdown-item" href="/GraphicDesign">Graphic Design</a>
+                    <a class="dropdown-item" href="/Photography">Photography</a>
+                    <a class="dropdown-item" href="/Architecture">Architecture</a>
+                    <a class="dropdown-item" href="/Nature">Natural Phenomena</a>
+                    <a class="dropdown-item" href="/Finance">Financial Analysis</a>
+                    <a class="dropdown-item" href="/Facial">Facial & Cosmetic Dentistry</a>
+                    <a class="dropdown-item" href="/Geometry">Mathematics & Geometry</a>
+                    <a class="dropdown-item" href="/Quantum">Quantum Physics</a>
+                  </div>
+                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- INFORMATION -->
+
+<section id="about">
+  <section id="interactive">
+    <div class="container">
+      <h1>Facial & Cosmetic Dentistry</h1>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>THEORY</h2>
+    </div>
+    <div class="about-content">
+<p>The human face abounds with examples of the Golden Ratio, also known as the Golden Section or Divine Proportion. It is often said that "beauty is in the eye of the beholder." Evidence shows though that the closer facial proportions are to the golden ratio, the more a face will be perceived as attractive, across race, culture or era.</p>
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>FACIAL GOLDEN RATIOS</h2>
+
+    </div>
+    <div class="about-content">
+<p>An oval head and the positions and dimensions of the eyes and the mouth. As evidence, consider the “smiley face.” It expresses a variety of facial expressions with nothing more than a circular head, two eyes and a mouth line:</p>
+<img src="{{url_for('static', filename='img/f&c.gif')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;">
+<p>We immediately recognize this icon as a face, but it clearly does not represent the proportions of a human face.</p>
+<p></p>
+<p></p>
+<p>Let’s express the facial markers with normal human proportions, and with the simplest possible representation. This requires a vertical oval, two lines for the eyes and a line for the mouth. The resulting face will look something more like this:</p>
+<img src="{{url_for('static', filename='img/f&c1.gif')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;">
+<p>This simple facial configuration is easily mapped to very natural human proportions with the use of four simple golden ratio proportions:</p>
+<img src="{{url_for('static', filename='img/f&c2.png')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;"><p style="text-align:center;">Head height to width </p>
+<img src="{{url_for('static', filename='img/f&c3.png')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;"><p style="text-align:center;">Eyes to mouth to chin </p>
+<img src="{{url_for('static', filename='img/f&c4.png')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;"><p style="text-align:center;">Facial width to inner eye </p>
+<img src="{{url_for('static', filename='img/f&c5.png')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;"><p style="text-align:center;">Inner eye to outer eye to side of face </p>
+
+<p>The next important human facial feature is the nose, most simply represented by two nostrils. These too can be mapped to very natural human proportions with golden ratio lines:</p>
+<img src="{{url_for('static', filename='img/f&c6.gif')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;">
+<p style="text-align:center;">The nostrils in relation to the pupils of the eyes</p>
+<img src="{{url_for('static', filename='img/f&c7.gif')}}" alt="" style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;">
+<p style="text-align:center;">The distance from the pupils to the nostrils to the mouth line</p>
+
+
+<img src="{{url_for('static', filename='img/f&c8.png')}}" alt=""  style="display: block;
+margin-top: 40px;
+margin-bottom: 20px;
+margin-left: auto;
+margin-right: auto;">
+<p>This basic set of facial markers has been identified and validated through my analysis of hundreds of faces. They provide a very simple and logical set of the points that are required to construct the most basic features of a human face. They identify common golden ratio proportions that can be found in many attractive human faces.</p>
+<p>Of these 33 markers, 28 are 14 sets of symmetrical markers that appear on both sides of the face. Five other markers are on the vertical center line of the face and define proportions based on horizontal measures.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>GOLDEN RATIO IN COSMETIC DENTISTRY</h2>
+    <img src="{{url_for('static', filename='img/f&c9.png')}}" alt=""  style="display: block;
+    margin-top: 40px;
+    margin-bottom: 20px;
+    margin-left: 280px;
+    width: 450px;
+    ">
+    </div>
+    <div class="about-content">
+<p>The physical components which make up the sense of beauty and attractiveness come down to balance and proportion. This natural law of beauty is known as the Golden Proportion.
+ The Golden Proportion is a vital component in need of understanding, so as to creating the flawless smile.</p>
+<p>We all know our smile affects our appearance in different ways. For example, prominent canine teeth create an aggressive appearance. Rounded lateral incisors are associated with a more feminine look, while a blocky shape appears more masculine. But what about the proportions of our teeth?</p>
+
+<p>Let’s talk about the perfect smile.</p>
+<p>In it, the two front teeth form a Golden Ratio in relation to their height and width. We could generalize this a bit and say that their width should be about 70 percent of their height. This ratio is then carried out even further in considering the width of the first and second tooth from the center teeth. Even the ratio of the entire width of the smile to the location of the third tooth — yep. Golden Ratio. That seemingly magic ratio of perfection is seen over and over in our teeth and mouth, just as it is found repeatedly in nature.</p>
+<p>The state our smile is in, including positioning and color of teeth, affects our appearance more than we might think.  While the skin on our face inevitably ages, and in the process loses elastin and collagen, our teeth are also aging.</p>
+
+<p>The fact is, that our “teeth support the lower third of the face, and over time, this support begins to collapse” shifting the position of the teeth that would more favorably provide some much needed support to the upper lip.</p>
+
+<p>When teeth begin to collapse, some people choose to have a collagen injection into the lip.  This provides some fullness to the lip but it doesn’t fix the root of the problem, which is the fact that the position of the teeth has shifted and needs to be fixed.</p>
+<p>The Golden Ratio ensures that your beautiful smile looks most natural.  His happens when you take into consideration: “face shape, tooth colour, tooth size, light refraction, age and skin tone.” It is obvious that a white, bright smile makes a person appear healthy and attractive and is a tremendous asset both in business and in one’s private life. A good cosmetic dentist is not only skilled in the latest techniques but is also knowledgeable about aesthetics and how teeth should appear in proportion to one another in order to achieve a natural effect. There is nothing worse than front teeth that are obviously crowns and are prominent and bulky, or just too big for the mouth. They just look plain artificial and can fool nobody. The best cosmetic dentistry keeps your teeth looking like natural teeth whilst improving them at the same time.</p>
+</p>
+</div>
+</div>
+</div>
+</div>
+
+</div>
+</section>
+</section>
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

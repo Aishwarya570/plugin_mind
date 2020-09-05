@@ -1,0 +1,343 @@
+
+
+
+
+
+<!DOCTYPE html>
+<html>
+<head>
+<title>CODE SAGE</title>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* slider */
+#slider{
+  width: 100%;
+}
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+}
+#mybutton{
+  color: white;
+}
+.col-md-6 img{
+  height: 300px;
+  width: 500px;
+  margin-left: 90px;
+}
+#interactive{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+  background-size: cover;
+  background-position: center;
+  color: #efefef!important;
+  background-attachment: fixed;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+.interactive{
+  margin-top: 40px;
+}
+.icon{
+  font-size: 40px;
+  margin: 20px auto;
+  padding: 20px;
+  height: 90px;
+  width: 90px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+#interactive p{
+  font-size: 14px;
+  margin-top: 20px;
+  color: #ccc;
+}
+.interactive .col-md-3:hover{
+  background: #fa8f87;
+  cursor: pointer;
+  transition: 0.7s;
+}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+</style>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/MainPage">Creative Learning</a>
+        </li>
+        <li class="nav-item">
+	  <a class="nav-link" href="/">Emotion Detector</a>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" href="/service">Services</a>
+	</li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+
+<h2>Answer:</h2><br>
+{% if 'help' ==strm or 'Help' ==strm or 'HELP' ==strm or 'what do you do?' ==strm or 'what are you capable of?' ==strm %}
+<h1> Hey, I'm Phi. I'm learning about the golden ratio. I've already learned some important facts about the golden ratio. You can ask me some questions to get a grasp of those essential facts about the golden ratio. Also, I feel Knowledge shared = (Knowledge)^2. I'm learning to share, sharing to learn.
+1.How is Phi measured<br>
+2.mathematical derivation<br>
+3.rule of thumb<br>
+4.drawing golden ratio<br>
+5.what does phi have to do with the spiral of a pine cone<br>
+6.Fibonacci number<br>
+7.Lucas number<br>
+8.difference between phi & Phi, etc.<br></h1>
+
+{% elif 'hi' ==strm or 'Hello' ==strm or 'HI' ==strm or 'HELLO' ==strm or 'hey' == strm or 'Hey' ==strm %}
+<h1>Hey</h1>
+
+{% elif 'what are you?' ==strm or 'what are you' ==strm or 'who are you?' ==strm or 'who are you' ==strm %}
+<h1>I'm Phi</h1>
+
+{% elif 'how are you' ==strm or 'how have you been' == strm %}
+<h1>I'm okay, and I have just now started exploring the beauty of the golden ratio.</h1> 
+
+{% elif 'value of Phi' ==strm %}
+<h1>Phi ( Φ = 1.618033988749895… )</h1>
+
+{% elif 'How is Phi measured' == strm %}
+<h1>If the ratio of 2 numbers turns out to be tending to this 1.618 special value, the two numbers are said to be in Golden Ratio.</h1>
+
+{% elif 'rule of thumb' == strm %}
+<h1>Rule of thumb is, just remember that if the ratio of 2 things converges to 1.61803398874989484820 or anything even near that value, these things are said to be in Golden Ratio.</h1>
+
+{% elif 'mathematical derivation' == strm or 'formula of golden ratio' == strm %}
+<h1>--> a / b = (a + b) / a <br>
+--> a / b = (a / a) + (b / a) <br>
+--> a / b is Golden Ratio φ <br>
+--> a / a = 1 <br>
+--> b / a = 1 / φ <br>
+--> φ = 1 / φ <br>
+ <br>
+So, the Golden Ratio can be defined in terms of itself!<br>
+<br>
+--> φ = 1 + 1 / 1.618<br>
+--> φ = 1 + 0.61805...<br>
+--> φ = 1.61805...<br>
+With more digits we would be more accurate.<br>
+</h1>
+
+{% elif 'drawing golden ratio' == strm %}
+<h1> > Draw a square of size "1"<br>
+> Place a dot half way along one side<br>
+> Draw a line from that point to an opposite corner<br>
+> Now turn that line so that it runs along the square's side<br>
+> Then you can extend the square to be a rectangle with the Golden Ratio!<br>
+</h1>
+<img src="{{url_for('static',filename='Goldenratiomaths.jpg')}}">
+
+{% elif 'what does phi have to do with the spiral of a pine cone' == strm or
+'What does phi have to do with spiral of pine cone'== strm %}
+<h1> The bottom of a pine cone reveals two spirals in opposite directions, both Fibonacci numbers, typically 8 & 13.</h1>
+
+{% elif 'what does phi have to do with the shape or spiral of leaves or flowers' == strm %}
+<h1>Leaves are arrange around the stems of a plant at roughly 137.5 degrees to optimize exposure to the sun. The complement to that angle, 222.5 is 360 degrees divided by phi. Flowers often have a Fibonacci number for the number of petals.</h1>
+
+{% elif 'Fibonacci number' == strm or 'what is a fibonacci number' ==strm %}
+<h1>Any number in the additive series that was discovered Leonardo Fibonacci, 0 1 1 2 3 5 8 13 etc. – Each one is the sum of the two before.</h1>
+
+{% elif 'Lucas number'== strm or 'what is a Lucas number' ==strm %}
+<h1>The difference in the definition is that the Lucas series starts with 2 and 1 rather than 1 and 1.
+Lucas Series:
+
+2, 1, 3, 4, 7, 11, 18, 29, 47, 76, 123, 199, 322, 521, … </h1>
+
+{% elif 'difference between phi & Phi'==strm or 'What is phi and how does it differ from Phi' ==strm %}
+<h1>Little phi is 0.618… and Big Phi is 1.618. phi + 1 = Phi. 1 / Phi = phi. 1 / Phi = phi.</h1>
+
+{% elif 'check Phi in nature,plant spiral, etc' == strm %}
+<h1>Just measure the dimensions of anything and then get out your calculator to see if the ratio of 1.618 to 1 can be found in its proportions.</h1>
+
+{% elif 'Phi is not  generally taught in school. What can you say on this'==strm %}
+<h1>Phi unveils a unity, harmony and beauty in the design of life and the universe. Grasping that can be a spiritual experience, like a window into the mind of God. While in past eras mankind integrated scientific and spiritual pursuits as one, we live in a post-Darwinian age in which academicians and scientists are jeered by their colleagues for even speaking of God. Science should openly investigate all possibilities, but doesn’t because of intellectual pride and academic “standards” that we have imposed upon ourselves. In addition, people who take pride in their intellect find it hard to accept an intellect so much greater than their own could exist. Phi should be included in our curriculums because it can be applied to understanding and unifying many fields of study.</h1>
+
+{% elif 'Is golden ratio important for living beings'==strm %}
+<h1>I do not believe it’s a coincidence because it appears it places where there seems to be no reason other than for beauty alone. I think it is an evidence of the beauty and harmony of creation that was put their by our God and Creator.</h1>
+
+{% elif 'could you please tell me why the golden ratio has infinite decimals digits'==strm %}
+<h1>Simply because it’s an irrational number in our base 10 and cannot be expressed in integers alone</h1>
+
+{% elif 'When applied to the real world, do you think that the golden ratio is just a curiosity, or is something more important'==strm %}
+<h1>It’s too pervasive in nature and too unique and interesting mathematically to call it a curiosity. It’s not an absolute or a law though. I think of it as a constant used by God to assure the beauty and harmony of His creation, the signature of the Author and Artist of Life.</h1>
+
+{% elif 'future of golden ratio'==strm or 'future of Phi'==strm %}
+<h1>It’s part of nature’s design and will continue to be so.  Each generation, each person, can discover it anew in their own lifetime.  I think the future of phi will be to continue to raise the awareness of those who will believe of the beauty, harmony, design, purpose and oneness of life.  It will be a gateway to understanding the incredible expression of all these same things by God our Creator in the creation of life.  Of course, there will be those who will not believe and will continue to explain it all away as purposeless pattern seeking, entirely natural and with no cause other than efficient design.  Phi brings us to a fork in the road of deciding how and why we are here, and you must upon which road you will make your life’s journey.</h1>
+
+{% else %}
+<h1>Well, I'm still learning & that's what life is about. Hopefully, I can keep getting better & not stop where I am now.</h1>
+
+{% endif %}
+=========================================================================
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

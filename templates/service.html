@@ -1,0 +1,514 @@
+
+<html>
+<head>
+<title>SERVICES</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+=========================================================
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+section{
+  /* background-image: linear-gradient(rgba(113, 245, 113, 0.8),rgba(107, 227, 223, 0.8)),url("{{url_for('static', filename='GolR.png')}}"); */
+      background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+}
+.jumbotron{
+  background-color: #c4f4fc;
+}
+/* APPLICATION TABS */
+.app-section{
+  max-width: 960px;
+  margin: 0 auto;
+  padding: 6% 2%;
+}
+
+.app-grid {
+  margin: 20px 0 0 0;
+  padding: 0;
+  list-style: none;
+  display: block;
+  text-align: center;
+  width: 100%;
+}
+
+.app-grid::after{
+  clear: both;
+}
+
+.app-grid::after, .app-box::before{
+  content: "";
+  display: table;
+}
+.app-grid li{
+  width: 328px;
+  height: 328px;
+  display: inline-block;
+  margin: 20px;
+}
+
+.app-box {
+  width: 100%;
+  height: 100%;
+  position: relative;
+  cursor: pointer;
+  border: 2px solid black;
+  border-radius: 10px;
+  -webkit-transition: 0.3s ease-in-out, -webkit-transition: 0.3s ease-in-out;
+  -moz-transition: 0.3s ease-in-out, -moz-transition: 0.3s ease-in-out;
+  transition: 0.3s ease-in-out, transform 0.3s ease-in-out;
+}
+
+.app-box:hover {
+  transform: scale(1.05);
+}
+
+.app-img-1 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-2 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-3 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-4 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-5 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-6 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-7 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+
+.app-img-8 {
+  background: linear-gradient(rgba(0, 0, 0, 0.50),rgba(0, 0, 0, 0.10)),url("{{url_for('static', filename='app-img1.png')}}");
+}
+.flip-card {
+  background-color: transparent;
+  width: 100%;
+  height: 100%;
+  border: 1px solid #f1f1f1;
+  perspective: 1000px; /* Remove this if you don't want the 3D effect */
+}
+
+/* This container is needed to position the front and back side */
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  text-align: center;
+  transition: transform 0.8s;
+  transform-style: preserve-3d;
+}
+
+/* Do an horizontal flip when you move the mouse over the flip box container */
+.flip-card:hover .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+/* Position the front and back side */
+.flip-card-front, .flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  -webkit-backface-visibility: hidden; /* Safari */
+  backface-visibility: hidden;
+}
+
+/* Style the front side (fallback if image is missing) */
+.flip-card-front {
+  background-color: #bbb;
+  color: black;
+}
+
+/* Style the back side */
+.flip-card-back {
+  background-color: dodgerblue;
+
+  color: white;
+  transform: rotateY(180deg);
+}
+.app-info {
+  position: absolute;
+  width: inherit;
+  height: inherit;
+}
+
+#leftDiv{
+  padding:10px;
+padding-left:200px;
+  padding-right: 0px;
+display:table-cell;
+  margin-right: 0px;
+color:white;
+}
+
+#rightDiv{
+  padding:10px;
+  padding-left: 900px;
+display:table-cell;
+  margin-left: 0px;
+  color:white;
+}
+</style>
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/MainPage">Creative Learning</a>
+        </li>
+        <li class="nav-item">
+	  <a class="nav-link" href="/">Emotion Detector</a>
+	</li>
+	<li class="nav-item">
+	  <a class="nav-link" href="/service">Services</a>
+	</li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- APPLICATION TABS -->
+
+<section>
+
+<div>
+  <div id="leftDiv">
+    User : Ishan.<br>
+<button onclick="myFunction()" style="background-color:#008CBA; color: white;">Login</button><br>
+<div id="myDIV">Status : Logged out</div>
+  </div>
+  <div id="rightDiv">
+    Points=50 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;">
+  </div>
+</div>
+
+  <div class="container">
+<br>
+    <div class="jumbotron">
+<h2><center> SERVICES </center></h2>
+  <div class="app-section">
+    <ul class="app-grid">
+      <li>
+        <div class="app-box app-img-1">
+<div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='phone-1.png')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Refurbished Phone</h1>
+      <p>Points : 1000 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can take the phone on loan & can use it to study. Based upon your performance you'll be awarded with more points, so you can study further.</p>
+	<button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    
+</div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="app-box app-img-2">
+          <div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='phone-2.png')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Refurbished Phone</h1>
+      <p>Points : 1000 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can take the phone on loan & can use it to study. Based upon your performance you'll be awarded with more points, so you can study further.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="app-box app-img-3">
+          
+          <div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='phone-3.png')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>New Phone</h1>
+      <p>Points : 2000 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can take the phone on loan & can use it to study. Based upon your performance you'll be awarded with more points, so you can study further.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="app-box app-img-4">
+          <div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='food-1.jpg')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Food</h1>
+      <p>Points : 600 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can redeem the food coupon on specific outlets.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="app-box app-img-5">
+          <div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='food-2.png')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Food</h1>
+      <p>Points : 500 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can redeem the food coupon on specific outlets.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="app-box app-img-6">
+          
+          <div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='netpack.jpg')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Net Pack</h1>
+      <p>Points: 500 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can get 4G data 2GB for free.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+        <div class="app-box app-img-7">
+          
+          <div class="app-info"><div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='coupons-1.png')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Electricity Coupon</h1>
+      <p>Points : 1000 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>You can use this coupon to get 50% off on electricity bill.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+      <li>
+      <div class="app-box app-img-8">
+         
+          <div class="app-info">
+          <div class="flip-card">
+  <div class="flip-card-inner">
+    <div class="flip-card-front">
+  <center><img src="{{url_for('static', filename='uniform-1.jpg')}}" style="width:325px;height:325px"></center>
+    </div>
+    <div class="flip-card-back">
+      <h1>Uniform</h1>
+      <p>Points : 2500 <img src="{{url_for('static', filename='Points.png')}}" style="height: 40px;"></p>
+      <p>A school uniform is a uniform worn by students primarily for a school or otherwise educational institution.</p>
+    <button style="background-color:#f44336; color: white; padding:10px;">Buy</button>    </div>
+  </div>
+</div>
+          </div>
+        </div>
+      </li>
+    </ul>
+  </div>
+</div>
+</div>
+</section>
+  <script src="{{ url_for('static', filename='smooth-scroll.js') }}"></script>
+  <script>
+  var scroll = new SmoothScroll('a[href*="/"]');
+  </script>
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+<script>
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.innerHTML === "Status : Logged out") {
+    x.innerHTML = "Status : Logged In";
+  } else {
+    x.innerHTML = "Status : Logged out";
+  }
+}
+</script>
+</body>
+</html>

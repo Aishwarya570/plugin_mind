@@ -1,0 +1,300 @@
+<html>
+<head>
+<title>ARCHITECTURE</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+=========================================================
+body {font-family: Arial, Helvetica, sans-serif;}
+* {box-sizing: border-box;}
+
+/* Button used to open the chat form - fixed at the bottom of the page */
+.open-button {
+  background-color: #555;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  opacity: 0.8;
+  position: fixed;
+  bottom: 23px;
+  right: 28px;
+  width: 280px;
+}
+
+/* The popup chat - hidden by default */
+.chat-popup {
+  display: none;
+  position: fixed;
+  bottom: 0;
+  right: 15px;
+  border: 3px solid #f1f1f1;
+  z-index: 9;
+}
+
+/* Add styles to the form container */
+.form-container {
+  max-width: 300px;
+  padding: 10px;
+  background-color: white;
+}
+
+/* Full-width textarea */
+.form-container textarea {
+  width: 100%;
+  padding: 15px;
+  margin: 5px 0 22px 0;
+  border: none;
+  background: #f1f1f1;
+  resize: none;
+  min-height: 200px;
+}
+
+/* When the textarea gets focus, do something */
+.form-container textarea:focus {
+  background-color: #ddd;
+  outline: none;
+}
+
+/* Set a style for the submit/send button */
+.form-container .btn {
+  background-color: #4CAF50;
+  color: white;
+  padding: 16px 20px;
+  border: none;
+  cursor: pointer;
+  width: 100%;
+  margin-bottom:10px;
+  opacity: 0.8;
+}
+
+/* Add a red background color to the cancel button */
+.form-container .cancel {
+  background-color: red;
+}
+
+/* Add some hover effects to buttons */
+.form-container .btn:hover, .open-button:hover {
+  opacity: 1;
+}
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* information */
+body{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+  margin-bottom: 50px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+  /* text-align: center; */
+  margin-left: 0px;
+  font-size: 20px;
+}
+#about h2{
+  font-size: 30px;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+  text-align: left;
+  margin-left: 15px;
+}
+
+/* Geometry ---Tables */
+.interactive table{
+  color: white;
+  border-collapse: collapse;
+  width: 100%;
+  text-align: center;
+  padding-left: auto;
+  padding-right: auto;
+}
+.interactive th,td{
+  padding: 8px;
+  text-align: left;
+  border-bottom: 1px solid #ddd;
+}
+
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/AboutGR">ABOUT GOLDEN RATIO</a>
+        </li>
+        <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+        INTERACTIVE
+      </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/imageGR">Detecting Golden Ratio</a>
+                <a class="dropdown-item" href="/human1">Golden Ratio in Humans</a>
+                <a class="dropdown-item" href="/guitar">Virtual Guitar</a>
+                <a class="dropdown-item" href="/liveGR">Live Golden Ratio Object Detector</a>
+              </div>
+            </li>
+        <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            APPLICATION
+          </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/Applications">All</a>
+                    <a class="dropdown-item" href="/GraphicDesign">Graphic Design</a>
+                    <a class="dropdown-item" href="/Photography">Photography</a>
+                    <a class="dropdown-item" href="/Architecture">Architecture</a>
+                    <a class="dropdown-item" href="/Nature">Natural Phenomena</a>
+                    <a class="dropdown-item" href="/Finance">Financial Analysis</a>
+                    <a class="dropdown-item" href="/Facial">Facial & Cosmetic Dentistry</a>
+                    <a class="dropdown-item" href="/Geometry">Mathematics & Geometry</a>
+                    <a class="dropdown-item" href="/Quantum">Quantum Physics</a>
+                  </div>
+                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- INFORMATION -->
+
+<section id="about">
+  <section id="interactive">
+    <div class="container">
+      <h1>ARCHITECTURE</h1>
+<div class="container">
+  <div class="jumbotron">
+    <div class="row">
+    <div class="col-md-6">
+    <h2>THEORY</h2>
+    </div>
+    <div class="about-content">
+<p>The history of the golden ratio in architecture begins with the ancient Greeks, to whom aesthetics were very important. But using the golden ratio in architecture gives balance, which is appreciated in any architectural style.</p>
+<p>It was intensively used in the Middle Ages and the Renaissance. Salisbury Cathedral (13th century) and the Palazzo Vecchio (15th century) in Florence are good examples. People are still looking for codes and mystical objects in these places. </p>
+<p>There’s a long list of famous buildings that use the golden ratio. The list covers all periods of history and adds new buildings every day. The golden ratio and golden spiral are taught in architecture schools around the world. </p>
+<p>Ancient Greek architecture used the Golden Ratio to determine pleasing dimensional relationships between the width of a building and its height, the size of the portico and even the position of the columns supporting the structure.</p>
+<p>The final result is a building that feels entirely in proportion. The neo-classical architecture movement reused these principles too.</p>
+
+</div>
+</div>
+</div>
+</div>
+
+<table align="center">
+		<tr>
+			<td>
+				<img src="{{url_for('static', filename='img/a1.png')}}" height="350" width="360"/>
+			</td>
+			<td>
+				<img src="{{url_for('static', filename='img/a2.jpg')}}" height="350" width="360"/>
+			</td>
+			<td>
+				<img src="{{url_for('static', filename='img/a3.jpg')}}" height="350" width="360"/>
+			</td>
+		</tr>
+		<tr>
+			<td>
+				<img src="{{url_for('static', filename='img/a4.jpg')}}" height="350" width="360"/>
+			</td>
+			<td>
+				<img src="{{url_for('static', filename='img/a5.jpg')}}" height="350" width="360"/>
+			</td>
+			<td>
+				<img src="{{url_for('static', filename='img/a6.jpeg')}}" height="350" width="360"/>
+			</td>
+		</tr>
+</table>
+
+</div>
+</section>
+</section>
+<button class="open-button" onclick="openForm()">Chat</button>
+<div class="chat-popup" id="myForm">
+<form action="http://127.0.0.1:5000/" method="post" class="form-container">
+<h1>Chat</h1>
+	<label for="nm"><b>Message</b></label>
+	<textarea placeholder="Type message.." name="nm" required></textarea>
+    <button type="submit" class="btn">Send</button>
+    <button type="button" class="btn cancel" onclick="closeForm()">Close</button>
+</form></div>
+
+<script>
+function openForm() {
+  document.getElementById("myForm").style.display = "block";
+}
+
+function closeForm() {
+  document.getElementById("myForm").style.display = "none";
+}
+</script>
+</body>
+</html>

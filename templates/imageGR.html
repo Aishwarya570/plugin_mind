@@ -1,0 +1,273 @@
+
+<html>
+<head>
+<title>CODE SAGE</title>
+<style>
+*{
+  margin: 0;
+  padding: 0;
+}
+#myDIV {
+  width: 100%;
+padding: 10px;
+  text-align: center;
+  margin-top: 20px;
+}
+.texti{
+color: white;
+}
+.button {
+  background-color: #4CAF50; /* Green */
+  border: none;
+  color: white;
+  padding: 16px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  transition-duration: 0.4s;
+  cursor: pointer;
+  position:relative;
+  top:10px;
+}
+.button3 {
+  background-color: white; 
+  color: black; 
+  border: 2px solid #f44336;
+}
+
+.button3:hover {
+  background-color: #f44336;
+  color: white;
+}
+========================================================
+.popup {
+    display: inline-block;
+}
+.popup .popuptext {
+    visibility: hidden;
+    width: 50px;
+    background-color: #b1b1b1;
+    color: #fff;
+    text-align: center;
+    padding: 2px;
+    position:relative;
+}
+.popup .show {
+    visibility: visible;
+    -webkit-animation: fadeIn 1s;
+    animation: fadeIn 1s;
+}
+--------------------------------------------------------
+/* Navigation  */
+#nav-bar{
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
+.navbar-brand img{
+  height: 70px;
+  padding-left: 30px;
+}
+.navbar-nav li{
+  padding: 0 10px;
+}
+.navbar-nav li a{
+  float: right;
+  text-align: left;
+}
+#nav-bar ul li a:hover{
+  color: #007bff!important;
+}
+.navbar{
+  background: #fff;
+}
+.navbar-toggler{
+  border: none!important
+}
+.nav-link{
+  color: #555!important
+  font-weight: 600;
+  font-weight: 600;
+  font-size: 16px;
+}
+/* slider */
+#slider{
+  width: 100%;
+}
+#about{
+  padding-top: 50px;
+  padding-bottom: 50px;
+  color: #555;
+}
+#about .btn{
+  margin-top: 20px;
+  margin-bottom: 30px;
+}
+.about-content{
+  padding-top: 20px;
+}
+#mybutton{
+  color: white;
+}
+.col-md-6 img{
+  height: 300px;
+  width: 500px;
+  margin-left: 90px;
+}
+#interactive{
+  background-image: linear-gradient(rgba(255, 0, 0, 0.8),rgba(255, 0, 0, 0.8)),url("{{url_for('static', filename='GolR.png')}}");
+  background-size: cover;
+  background-position: center;
+  color: #efefef!important;
+  background-attachment: fixed;
+  padding-top: 50px;
+  padding-bottom: 50px;
+}
+#interactive h1{
+  text-align: center;
+  color: #efefef!important;
+  padding-bottom: : 10px;
+}
+#interactive h1::after{
+  content: '';
+  background: #efefef;
+  display: block;
+  height: 3px;
+  width: 170px;
+  margin: 20px auto 5px;
+}
+.interactive{
+  margin-top: 40px;
+}
+.icon{
+  font-size: 40px;
+  margin: 20px auto;
+  padding: 20px;
+  height: 90px;
+  width: 90px;
+  border: 1px solid #fff;
+  border-radius: 50%;
+}
+#interactive p{
+  font-size: 14px;
+  margin-top: 20px;
+  color: #ccc;
+}
+.interactive .col-md-3:hover{
+  background: #fa8f87;
+  cursor: pointer;
+  transition: 0.7s;
+}
+</style>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css" integrity="sha384-JcKb8q3iqJ61gNV9KGb8thSsNjpSL0n8PARn9HuZOnIxN0hoP+VmmDGMN5t9UJ0Z" crossorigin="anonymous">
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css">
+<script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js"></script>
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.3/js/bootstrap.min.js"></script>
+</head>
+<body>
+<!---NavigationBar---->
+<section id="nav-bar">
+  <nav class="navbar navbar-expand-lg navbar-light">
+    <a class="navbar-brand" href="/"><img src="{{url_for('static', filename='mind_logo.jpg')}}" style="height: 70px; padding-left: 30px;"></a>
+    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+    <div class="collapse navbar-collapse" id="navbarNav">
+      <ul class="navbar-nav ml-auto">
+        <li class="nav-item active">
+          <a class="nav-link" href="/">Home</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/AboutGR">ABOUT GOLDEN RATIO</a>
+        </li>
+        <li class="nav-item dropdown">
+ 
+<a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                aria-expanded="false">
+        INTERACTIVE
+      </a>
+              <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                <a class="dropdown-item" href="/imageGR">Detecting Golden Ratio</a>
+                <a class="dropdown-item" href="/human1">Golden Ratio in Humans</a>
+                <a class="dropdown-item" href="/guitar">Virtual Guitar</a>
+                <a class="dropdown-item" href="/liveGR">Live Golden Ratio Object Detector</a>
+              </div>
+            </li>
+<li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="interactive" id="navbarDropdownMenuLink" data-toggle="dropdown" aria-haspopup="true"
+                    aria-expanded="false">
+            APPLICATION
+          </a>
+                  <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+                    <a class="dropdown-item" href="/Applications">All</a>
+                    <a class="dropdown-item" href="/GraphicDesign">Graphic Design</a>
+                    <a class="dropdown-item" href="/Photography">Photography</a>
+                    <a class="dropdown-item" href="/Architecture">Architecture</a>
+                    <a class="dropdown-item" href="/Nature">Natural Phenomena</a>
+                    <a class="dropdown-item" href="/Finance">Financial Analysis</a>
+                    <a class="dropdown-item" href="/Facial">Facial & Cosmetic Dentistry</a>
+                    <a class="dropdown-item" href="/Geometry">Mathematics & Geometry</a>
+                    <a class="dropdown-item" href="/Quantum">Quantum Physics</a>
+                  </div>
+                </li>
+        <li class="nav-item">
+          <a class="nav-link" href="/#team">OUR TEAM</a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+</section>
+<!-- Interactive -->
+<section id="interactive">
+  <div class="container">
+    <h1>INTERACTIVE</h1>
+       <a class="texti" onclick="pop()">
+       <div class="icon">
+        <i class="fa fa-desktop" aria-hidden="true"></i>
+      </div><center>
+<h2>Detecting  Golden Ratio</h2></a>
+      <p>Detecting Golden ratio from any image using computer vision</p></center>
+<div class="popup">
+    <span class="popuptext" id="myPopup">
+      <form method="POST">
+	<label> Image </label>
+	<input type="text" name="image" value={{request.form.image}}>
+	<button type="submit">Submit</button>
+</form>
+    </span>
+  </div>    
+  </div>
+</section>
+<center>
+<button onclick="myFunction()" class="button button3">HELP</button></center>
+<div id="myDIV">
+<section id="interactive">
+<h2>Steps to use</h2>
+<br>
+<ol>
+  <li>1. Check the directory of the image. -> C:\Users\UserName\Downloads</li><br>
+  <li>2. Make sure the image is of type .jpg or .png.</li><br>
+  <li>3. Enter the name of the image without type. The software will automatically figure out the type of image.</li><br>
+  <li>4. To close the image tab, press the 'Q' key.</li><br>
+</ol>  
+</div>
+<script>
+function pop() {
+    var popup = document.getElementById('myPopup');
+    popup.classList.toggle('show');
+}
+function myFunction() {
+  var x = document.getElementById("myDIV");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+</script>
+</body>
+</html>
